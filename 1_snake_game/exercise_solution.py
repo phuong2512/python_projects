@@ -110,7 +110,7 @@ class Game:
 
     def render_background(self):
         bg = pygame.image.load("resources/grass.jpg")
-        bg = pygame.transport.scale(bg, (1080, 835))
+        bg = pygame.transform.scale(bg, (1080, 835))
         self.surface.blit(bg, (0,0))
 
     def play(self):
