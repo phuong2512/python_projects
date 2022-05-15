@@ -11,7 +11,7 @@ BACKGROUND_COLOR = (110, 110, 5)
 class Apple:
     def __init__(self, parent_screen):
         self.parent_screen = parent_screen
-        self.image = pygame.image.load("resources/apple.jpg").convert()
+        self.image = pygame.image.load("resources/apple.png").convert()
         self.x = 120
         self.y = 120
 
@@ -26,7 +26,7 @@ class Apple:
 class Snake:
     def __init__(self, parent_screen):
         self.parent_screen = parent_screen
-        self.image = pygame.image.load("resources/block.jpg").convert()
+        self.image = pygame.image.load("resources/snake.png").convert()
         self.direction = 'down'
 
         self.length = 1
@@ -80,17 +80,12 @@ class Game:
         pygame.display.set_caption("Codebasics Snake And Apple Game")
 
         pygame.mixer.init()
-        self.play_background_music()
 
         self.surface = pygame.display.set_mode((1080, 835))
         self.snake = Snake(self.surface)
         self.snake.draw()
         self.apple = Apple(self.surface)
         self.apple.draw()
-
-    def play_background_music(self):
-        pygame.mixer.music.load('resources/bg_music_1.mp3')
-        pygame.mixer.music.play(-1, 0)
 
     def play_sound(self, sound_name):
         if sound_name == "crash":
