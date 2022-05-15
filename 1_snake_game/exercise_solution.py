@@ -82,7 +82,7 @@ class Game:
         pygame.mixer.init()
         self.play_background_music()
 
-        self.surface = pygame.display.set_mode((1000, 800))
+        self.surface = pygame.display.set_mode((1080, 835))
         self.snake = Snake(self.surface)
         self.snake.draw()
         self.apple = Apple(self.surface)
@@ -114,7 +114,8 @@ class Game:
         return False
 
     def render_background(self):
-        bg = pygame.image.load("resources/background.jpg")
+        bg = pygame.image.load("resources/grass.jpg")
+        bg = pygame.transport.scale(bg, (1080, 835))
         self.surface.blit(bg, (0,0))
 
     def play(self):
@@ -172,16 +173,16 @@ class Game:
                         pause = False
 
                     if not pause:
-                        if event.key == K_LEFT:
+                        if event.key == K_LEFT or envent.key == K_a:
                             self.snake.move_left()
 
-                        if event.key == K_RIGHT:
+                        if event.key == K_RIGHT or envent.key == K_d:
                             self.snake.move_right()
 
-                        if event.key == K_UP:
+                        if event.key == K_UP or envent.key == K_w:
                             self.snake.move_up()
 
-                        if event.key == K_DOWN:
+                        if event.key == K_DOWN or envent.key == K_s:
                             self.snake.move_down()
 
                 elif event.type == QUIT:
@@ -196,7 +197,7 @@ class Game:
                 pause = True
                 self.reset()
 
-            time.sleep(.1)
+            time.sleep(.15)
 
 if __name__ == '__main__':
     game = Game()
