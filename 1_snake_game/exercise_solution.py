@@ -168,16 +168,16 @@ class Game:
                         pause = False
 
                     if not pause:
-                        if event.key == K_LEFT or envent.key == K_a:
+                        if event.key == K_LEFT or event.key == K_a:
                             self.snake.move_left()
 
-                        if event.key == K_RIGHT or envent.key == K_d:
+                        if event.key == K_RIGHT or event.key == K_d:
                             self.snake.move_right()
 
-                        if event.key == K_UP or envent.key == K_w:
+                        if event.key == K_UP or event.key == K_w:
                             self.snake.move_up()
 
-                        if event.key == K_DOWN or envent.key == K_s:
+                        if event.key == K_DOWN or event.key == K_s:
                             self.snake.move_down()
 
                 elif event.type == QUIT:
