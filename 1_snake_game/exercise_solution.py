@@ -1,14 +1,10 @@
-# Add background image and music
-
 import pygame
 from pygame.locals import *
-import time
 import random
 
 clock = pygame.time.Clock()
 FPS = 10
 SIZE = 40
-BACKGROUND_COLOR = (110, 110, 5)
 
 class Apple:
     def __init__(self, parent_screen):
