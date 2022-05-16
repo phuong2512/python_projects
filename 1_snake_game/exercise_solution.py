@@ -5,6 +5,8 @@ from pygame.locals import *
 import time
 import random
 
+clock = pygame.time.Clock()
+FPS = 10
 SIZE = 40
 BACKGROUND_COLOR = (110, 110, 5)
 
@@ -26,7 +28,7 @@ class Apple:
 class Snake:
     def __init__(self, parent_screen):
         self.parent_screen = parent_screen
-        self.image = pygame.image.load("resources/snake.png").convert()
+        self.image = pygame.image.load("resources/snake.png").convert_alpha()
         self.direction = 'down'
 
         self.length = 1
@@ -134,7 +136,7 @@ class Game:
                 raise "Collision Occurred"
 
         # snake colliding with the boundries of the window
-        if not (0 <= self.snake.x[0] <= 1000 and 0 <= self.snake.y[0] <= 800):
+        if not (0 <= self.snake.x[0] <= 1080 and 0 <= self.snake.y[0] <= 835):
             self.play_sound('crash')
             raise "Hit the boundry error"
 
@@ -158,6 +160,7 @@ class Game:
         pause = False
 
         while running:
+            clock.tick(FPS)
             for event in pygame.event.get():
                 if event.type == KEYDOWN:
                     if event.key == K_ESCAPE:
@@ -192,7 +195,6 @@ class Game:
                 pause = True
                 self.reset()
 
-            time.sleep(.15)
 
 if __name__ == '__main__':
     game = Game()
