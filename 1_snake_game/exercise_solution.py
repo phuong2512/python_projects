@@ -83,7 +83,7 @@ class Game:
 
         pygame.mixer.init()
 
-        self.surface = pygame.display.set_mode((1080, 835))
+        self.surface = pygame.display.set_mode((1120, 835))
         self.snake = Snake(self.surface)
         self.snake.draw()
         self.apple = Apple(self.surface)
@@ -112,7 +112,7 @@ class Game:
 
     def render_background(self):
         bg = pygame.image.load("resources/grass.jpg")
-        bg = pygame.transform.scale(bg, (1080, 835))
+        bg = pygame.transform.scale(bg, (1120, 835))
         self.surface.blit(bg, (0,0))
 
     def play(self):
@@ -136,7 +136,7 @@ class Game:
                 raise "Collision Occurred"
 
         # snake colliding with the boundries of the window
-        if not (0 <= self.snake.x[0] <= 1080 and 0 <= self.snake.y[0] <= 835):
+        if not (0 <= self.snake.x[0] <= 1120 and 0 <= self.snake.y[0] <= 835):
             self.play_sound('crash')
             raise "Hit the boundry error"
 
