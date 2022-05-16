@@ -142,13 +142,13 @@ class Game:
 
     def display_score(self):
         font = pygame.font.SysFont('arial',30)
-        score = font.render(f"Score: {self.snake.length}",True,(200,200,200))
+        score = font.render(f"Snake Lenght: {self.snake.length}",True,(200,200,200))
         self.surface.blit(score,(850,10))
 
     def show_game_over(self):
         self.render_background()
         font = pygame.font.SysFont('arial', 30)
-        line1 = font.render(f"Game is over! Your score is {self.snake.length}", True, (255, 255, 255))
+        line1 = font.render(f"Game is over! Your snake lenght is {self.snake.length}", True, (255, 255, 255))
         self.surface.blit(line1, (200, 300))
         line2 = font.render("To play again press Enter. To exit press Escape!", True, (255, 255, 255))
         self.surface.blit(line2, (200, 350))
