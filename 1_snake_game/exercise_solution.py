@@ -6,10 +6,11 @@ clock = pygame.time.Clock()
 FPS = 10
 SIZE = 40
 
-class Apple:
+class Foods:
     def __init__(self, parent_screen):
         self.parent_screen = parent_screen
-        self.image = pygame.image.load("resources/apple.png").convert_alpha()
+        list_foods = ["resources/banana.png", "resources/apple.png", "resources/cherry.png"]    
+        self.image = pygame.image.load(random.choice(list_foods)).convert_alpha()
         self.x = 120
         self.y = 120
 
@@ -75,15 +76,15 @@ class Snake:
 class Game:
     def __init__(self):
         pygame.init()
-        pygame.display.set_caption("Codebasics Snake And Apple Game")
+        pygame.display.set_caption("Snake Hunting")
 
         pygame.mixer.init()
 
         self.surface = pygame.display.set_mode((1120, 835))
         self.snake = Snake(self.surface)
         self.snake.draw()
-        self.apple = Apple(self.surface)
-        self.apple.draw()
+        self.foods = Foods(self.surface)
+        self.foods.draw()
 
     def play_sound(self, sound_name):
         if sound_name == "crash":
@@ -97,7 +98,7 @@ class Game:
 
     def reset(self):
         self.snake = Snake(self.surface)
-        self.apple = Apple(self.surface)
+        self.foods = Foods(self.surface)
 
 
     def is_collision(self, x1, y1, x2, y2):
@@ -114,16 +115,16 @@ class Game:
     def play(self):
         self.render_background()
         self.snake.walk()
-        self.apple.draw()
+        self.foods.draw()
         self.display_score()
         pygame.display.flip()
 
         # snake eating apple scenario
         for i in range(self.snake.length):
-            if self.is_collision(self.snake.x[i], self.snake.y[i], self.apple.x, self.apple.y):
+            if self.is_collision(self.snake.x[i], self.snake.y[i], self.foods.x, self.foods.y):
                 self.play_sound("ding")
                 self.snake.increase_length()
-                self.apple.move()
+                self.foods.move()
 
         # snake colliding with itself
         for i in range(3, self.snake.length):
